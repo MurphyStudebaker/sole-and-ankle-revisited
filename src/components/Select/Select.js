@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, WEIGHTS, BREAKPOINTS } from '../../constants';
 
 import Icon from '../Icon';
+import Header from '../ShoeIndex'
 
 const Select = ({ label, value, children, ...delegated }) => {
   const childArray = React.Children.toArray(children);

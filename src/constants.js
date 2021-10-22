@@ -6,6 +6,7 @@ export const COLORS = {
     500: 'hsl(196deg 4% 60%)',
     700: 'hsl(220deg 5% 40%)',
     900: 'hsl(220deg 3% 20%)',
+    overlay: 'hsl(220deg 3% 20% / 0.8)',
   },
   primary: 'hsl(340deg 65% 47%)',
   secondary: 'hsl(240deg 60% 63%)',
@@ -16,3 +17,9 @@ export const WEIGHTS = {
   medium: 600,
   bold: 800,
 };
+
+export const BREAKPOINTS = {
+  phone: `${600 / 16}rem`,
+  tablet: `${950 / 16}rem`,
+  laptop: `${1300 / 16}rem`,
+}

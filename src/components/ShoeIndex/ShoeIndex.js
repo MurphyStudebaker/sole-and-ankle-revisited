@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { WEIGHTS, BREAKPOINTS } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -15,14 +15,16 @@ const ShoeIndex = ({ sortId, setSortId }) => {
       <MainColumn>
         <Header>
           <Title>Running</Title>
-          <Select
-            label="Sort"
-            value={sortId}
-            onChange={(ev) => setSortId(ev.target.value)}
-          >
-            <option value="newest">Newest Releases</option>
-            <option value="price">Price</option>
-          </Select>
+          <SortWrapper>
+            <Select
+              label="Sort"
+              value={sortId}
+              onChange={(ev) => setSortId(ev.target.value)}
+            >
+              <option value="newest">Newest Releases</option>
+              <option value="price">Price</option>
+            </Select>
+          </SortWrapper>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
@@ -47,10 +49,22 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    gap: 0;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+  @media(max-width: ${BREAKPOINTS.laptop}) {
+    flex-basis: 0px;
+    ${Spacer} {
+      display: none;
+    }
+  }
 `;
 
 const MainColumn = styled.div`
@@ -61,11 +75,20 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  @media(max-width: ${BREAKPOINTS.laptop}) {
+    align-items: flex-end;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
 `;
+
+const SortWrapper = styled.div`
+  @media (max-width: ${BREAKPOINTS.phone}) {
+    display: none;
+  }
+`
 
 export default ShoeIndex;
